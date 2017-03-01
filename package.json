@@ -1,6 +1,6 @@
 {
   "name": "Keystrokes",
-  "main": "./lib/keystrokes",
+  "main": "./lib/keycount",
   "version": "0.1.1",
   "description": "Records keystrokes and timestamps in a .csv file in the specified file path",
   "keywords": [],
