@@ -5,7 +5,7 @@
   "description": "Records keystrokes and timestamps in a .csv file in the specified file path",
   "keywords": [],
   "activationCommands": {
-    "atom-workspace": "keystrokes:toggle"
+    "atom-workspace": "keycount:toggle"
   },
   "repository": "https://github.com/lilyszhang/keystrokes",
   "license": "",

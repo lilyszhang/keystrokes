@@ -3,7 +3,7 @@
   'atom-text-editor': [
     {
       'label': 'Toggle Keystrokes'
-      'command': 'keystrokes:toggle'
+      'command': 'keycount:toggle'
     }
   ]
 'menu': [
@@ -14,7 +14,7 @@
       'submenu': [
         {
           'label': 'Toggle'
-          'command': 'keystrokes:toggle'
+          'command': 'keycount:toggle'
         }
       ]
     ]
