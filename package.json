@@ -1,0 +1,18 @@
+{
+  "name": "Keystrokes",
+  "main": "./lib/keystrokes",
+  "version": "0.0.0",
+  "description": "Counts key strokes and displays them in a panel",
+  "keywords": [],
+  "activationCommands": {
+    "atom-workspace": "keystrokes:toggle"
+  },
+  "repository": "https://github.com/lilyszhang/keystrokes",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.0.3"
+  }
+}
