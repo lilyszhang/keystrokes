@@ -35,7 +35,11 @@ class KeycountView extends View
           @tr class: 'used', =>
             @td class: 'source', (i + c - history.length + 1) + " " + key
     fs = require 'fs'
-    fs.appendFile '/Users/lilyzhang/Desktop/test.csv', time + ',' + history[-1..] + '\n'
+    editor = atom.workspace.getActivePaneItem()
+    file = editor?.buffer.file
+    directory = file?.getParent()
+    dirPath = directory?.path
+    fs.appendFile dirPath + '/keystrokes.csv', time + ',' + history[-1..] + '\n'
 
   initialize: ->
     @count = 0
