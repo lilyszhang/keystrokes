@@ -2,19 +2,19 @@
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Toggle Key Count View'
-      'command': 'keycount:toggle'
+      'label': 'Toggle Keystrokes'
+      'command': 'keystrokes:toggle'
     }
   ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'Key Count View'
+      'label': 'Keystrokes'
       'submenu': [
         {
           'label': 'Toggle'
-          'command': 'keycount:toggle'
+          'command': 'keystrokes:toggle'
         }
       ]
     ]

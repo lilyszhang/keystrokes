@@ -2,13 +2,13 @@
   "name": "Keystrokes",
   "main": "./lib/keystrokes",
   "version": "0.0.0",
-  "description": "Counts key strokes and displays them in a panel",
+  "description": "Records keystrokes and timestamps in a .csv file in the specified file path",
   "keywords": [],
   "activationCommands": {
     "atom-workspace": "keystrokes:toggle"
   },
   "repository": "https://github.com/lilyszhang/keystrokes",
-  "license": "MIT",
+  "license": "",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },

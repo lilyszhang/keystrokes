@@ -1,7 +1,3 @@
-# Key count package
+#Keystrokes
 
-Simple tool to count the number of key strokes using Atom.
-
-It is per window.
-
-![Example](https://raw.githubusercontent.com/soapskyway/keycount/master/AtomEditor.gif)
+Records keystrokes and timestamps in a .csv file in the specified file path
