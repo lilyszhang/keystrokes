@@ -23,7 +23,7 @@ class KeycountView extends View
   refresh: () ->
     c = @count
     history = @history
-    time = (Date.now() - @time)/1000
+    time = Date.now()
 
     @keystroke.html $$ ->
       @span class: 'keycount', " " + c
