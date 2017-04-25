@@ -12,6 +12,9 @@ class KeycountView extends View
       @div outlet: 'keylist', class: 'panel-body padded'
 
   add: (keys) ->
+    if keys == '#'
+      atom.notifications.addSuccess "Great job thinking through the problem!" + keys
+
     @count++
     @history = @history[-2..]
     @history.push keys
