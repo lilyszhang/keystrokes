@@ -18,6 +18,9 @@ class KeycountView extends View
       atom.notifications.addSuccess "Great job thinking through the problem! +1"
       @points++
 
+    if keys== 'cmd-i'
+      atom.notifications.addWarning("Think about what your code will output before running it.")
+
     @count++
     @history = @history[-2..]
     @history.push keys
