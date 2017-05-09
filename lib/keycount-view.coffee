@@ -9,15 +9,15 @@ class KeycountView extends View
         @div class: 'block', =>
           @span class: 'keycount-menu', 'Currently Recording Keystrokes'
           @button class: 'inline-block-tight stop', "Stop Recording"
-          @span class: 'keycount-menu-points', outlet: "pointcount", " 0"
-          @span class: 'keycount-menu-points', 'Effort Points:'
+          @span class: 'keycount-menu-points', outlet: "pointcount", " 0 "
+          @span class: 'keycount-menu-points', 'Brain Points:'
       @div outlet: 'keylist', class: 'panel-body padded'
-      
+
   add: (keys) ->
     if keys == '#'
       atom.notifications.addSuccess "Great job thinking through the problem! +1"
       @points++
-#
+
     @count++
     @history = @history[-2..]
     @history.push keys
@@ -26,7 +26,7 @@ class KeycountView extends View
   refresh: () ->
     p=@points
     @pointcount.html $$ ->
-      @span class: 'pointcount', " "+ p
+      @span class: 'keycount'," " + p
     c = @count
     history = @history
     time = Date.now()
