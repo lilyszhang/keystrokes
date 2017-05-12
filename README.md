@@ -11,3 +11,5 @@ Make sure to save the file before starting to record keystrokes in order to ensu
 1.0.3: Added point count to bottom right
 
 1.0.4: Added cmd-i (script) detection and feedback
+
+1.0.5: Added more accurate metrics
