@@ -17,19 +17,22 @@ class KeycountView extends View
     r=@run
     lp=@lastpause
     lk=@lastkey
+    check = @comment
     t = Date.now()
     # pause stuff
     @lastkey = t
     if t-lk > 30000
       @lastpause = t
+      @comment = 1
 
     if(lk-lp > 420000)
       atom.notifications.addWarning("Take a step back to think about what you're typing")
       @lastpause = t
 
-    if keys == '#'
+    if keys == '#' && check == 1
       atom.notifications.addSuccess "Great job thinking through the problem! +1"
       @points++
+      @comment = 0
       #running stuff
     if keys== 'cmd-i'
       r.push([Date.now()])
@@ -76,6 +79,7 @@ class KeycountView extends View
     @run = []
     @lastpause=Date.now()
     @lastkey=Date.now()
+    @comment = 1
     @on 'click', '.stop', ({target}) => @detach()
 
   # Tear down any state and detach
