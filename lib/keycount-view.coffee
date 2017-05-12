@@ -18,7 +18,7 @@ class KeycountView extends View
     lp=@lastpause
     lk=@lastkey
     t = Date.now()
-
+    # pause stuff
     @lastkey = t
     if t-lk > 30000
       @lastpause = t
@@ -30,7 +30,7 @@ class KeycountView extends View
     if keys == '#'
       atom.notifications.addSuccess "Great job thinking through the problem! +1"
       @points++
-
+      #running stuff
     if keys== 'cmd-i'
       r.push([Date.now()])
 
