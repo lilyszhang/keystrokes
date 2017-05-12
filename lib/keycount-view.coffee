@@ -1,5 +1,6 @@
 {Disposable, CompositeDisposable} = require 'atom'
 {$$, View} = require 'atom-space-pen-views'
+$ = require 'jquery'
 
 module.exports =
 class KeycountView extends View
@@ -17,7 +18,7 @@ class KeycountView extends View
     r=@run
     lp=@lastpause
     lk=@lastkey
-    check = @comment
+    check=@comment
     t = Date.now()
     # pause stuff
     @lastkey = t
@@ -25,7 +26,7 @@ class KeycountView extends View
       @lastpause = t
       @comment = 1
 
-    if(lk-lp > 420000)
+    if(lk-lp > 300000)
       atom.notifications.addWarning("Take a step back to think about what you're typing")
       @lastpause = t
 
@@ -71,6 +72,7 @@ class KeycountView extends View
     directory = file?.getParent()
     dirPath = directory?.path
     fs.appendFile dirPath + '/keystrokes.csv', time + ',' + history[-1..] + '\n'
+
 
   initialize: ->
     @count = 0
