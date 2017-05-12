@@ -20,6 +20,17 @@ class KeycountView extends View
     lk=@lastkey
     check=@comment
     t = Date.now()
+    last=@last5
+
+    #detect phrase
+    @last5.push(keys)
+
+    if @last5.length == 5
+      if @last5.join("") == 'print'
+        atom.notifications.addSuccess "Debugging with print statements is a great way to understand your code! +1"
+        @points++
+      @last5.shift()
+
     # pause stuff
     @lastkey = t
     if t-lk > 30000
@@ -27,7 +38,7 @@ class KeycountView extends View
       @comment = 1
 
     if(lk-lp > 300000)
-      atom.notifications.addWarning("Take a step back to think about what you're typing")
+      atom.notifications.addWarning "Take a step back to think about what you're typing"
       @lastpause = t
 
     if keys == '#' && check == 1
@@ -35,22 +46,18 @@ class KeycountView extends View
       @points++
       @comment = 0
       #running stuff
-    if keys== 'cmd-i'
-      r.push([Date.now()])
-
-    if keys== 'shift-ctrl-b'
-      r.push([Date.now()])
-
     if r.length > 0
       if t-r[0] > 30000
         r.pop(0)
       if keys== 'cmd-i'
         if r.length >= 3
           atom.notifications.addWarning("Think about what your code will output before running it.")
+          r.push([Date.now()])
           @run=[]
       if keys== 'shift-ctrl-b'
         if r.length >= 3
           atom.notifications.addWarning("Think about what your code will output before running it.")
+          r.push([Date.now()])
           @run=[]
 
 
@@ -82,6 +89,7 @@ class KeycountView extends View
     @lastpause=Date.now()
     @lastkey=Date.now()
     @comment = 1
+    @last5 = []
     @on 'click', '.stop', ({target}) => @detach()
 
   # Tear down any state and detach

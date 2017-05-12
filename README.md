@@ -13,3 +13,5 @@ Make sure to save the file before starting to record keystrokes in order to ensu
 1.0.4: Added cmd-i (script) detection and feedback
 
 1.0.5: Added more accurate metrics
+
+1.0.6: Added code for print statements
