@@ -14,12 +14,41 @@ class KeycountView extends View
       @div outlet: 'keylist', class: 'panel-body padded'
 
   add: (keys) ->
+    r=@run
+    lp=@lastpause
+    lk=@lastkey
+    t = Date.now()
+
+    @lastkey = t
+    if t-lk > 30000
+      @lastpause = t
+
+    if(lk-lp > 420000)
+      atom.notifications.addWarning("Take a step back to think about what you're typing")
+      @lastpause = t
+
     if keys == '#'
       atom.notifications.addSuccess "Great job thinking through the problem! +1"
       @points++
 
     if keys== 'cmd-i'
-      atom.notifications.addWarning("Think about what your code will output before running it.")
+      r.push([Date.now()])
+
+    if keys== 'shift-ctrl-b'
+      r.push([Date.now()])
+
+    if r.length > 0
+      if t-r[0] > 30000
+        r.pop(0)
+      if keys== 'cmd-i'
+        if r.length >= 3
+          atom.notifications.addWarning("Think about what your code will output before running it.")
+          @run=[]
+      if keys== 'shift-ctrl-b'
+        if r.length >= 3
+          atom.notifications.addWarning("Think about what your code will output before running it.")
+          @run=[]
+
 
     @count++
     @history = @history[-2..]
@@ -44,6 +73,9 @@ class KeycountView extends View
     @count = 0
     @points = 0
     @history = []
+    @run = []
+    @lastpause=Date.now()
+    @lastkey=Date.now()
     @on 'click', '.stop', ({target}) => @detach()
 
   # Tear down any state and detach
