@@ -20,15 +20,19 @@ class KeycountView extends View
     lk=@lastkey
     check=@comment
     t = Date.now()
+    # detect print statement
     last=@last5
+    print=@printed
 
     #detect phrase
     @last5.push(keys)
 
     if @last5.length == 5
       if @last5.join("") == 'print'
-        atom.notifications.addSuccess "Debugging with print statements is a great way to understand your code! +1"
-        @points++
+        if t - @printed > 60000
+          atom.notifications.addSuccess "Debugging with print statements is a great way to understand your code! +1"
+          @points++
+          @printed = t
       @last5.shift()
 
     # pause stuff
@@ -90,6 +94,8 @@ class KeycountView extends View
     @lastkey=Date.now()
     @comment = 1
     @last5 = []
+    # subtract 60 seconds to make sure we can detect if the first print occurs within the first minutes
+    @printed= Date.now()-60000
     @on 'click', '.stop', ({target}) => @detach()
 
   # Tear down any state and detach
