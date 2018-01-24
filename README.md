@@ -29,3 +29,5 @@ To start recording, go to Packages -> Keystrokes -> Toggle or use the shortcut, 
 1.0.5: Added more accurate metrics
 
 1.0.6: Added code for print statements
+
+3.0.3: Skipped a few versions ... reverted back to just tracking keystrokes and timestamps into a .csv file
